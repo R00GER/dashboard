@@ -5,48 +5,48 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
-} from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import SalesIcon from "@mui/icons-material/AttachMoney";
-import ProductIcon from "@mui/icons-material/ShoppingBag";
-import CustomersIcon from "@mui/icons-material/Groups";
-import SettingsIcon from "@mui/icons-material/Settings";
-import { Link } from "react-router-dom";
+} from '@mui/material';
+// import { makeStyles } from '@mui/styles';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import SalesIcon from '@mui/icons-material/AttachMoney';
+import ProductIcon from '@mui/icons-material/ShoppingBag';
+import CustomersIcon from '@mui/icons-material/Groups';
+import SettingsIcon from '@mui/icons-material/Settings';
+import { Link } from 'react-router-dom';
 
 const sideMenuWidth = 200;
 
-const useStyles = makeStyles({
-  sideMenuPaper: {
-    width: "200px",
-  },
-});
+// const useStyles = makeStyles({
+//   sideMenuPaper: {
+//     width: '200px',
+//   },
+// });
 
-const SideMenu = () => {
+function SideMenu() {
   const menuItems = [
-    { label: "Dashboard", icon: <DashboardIcon /> },
-    { label: "Sales", icon: <SalesIcon /> },
-    { label: "Products", icon: <ProductIcon /> },
-    { label: "Customers", icon: <CustomersIcon /> },
-    { label: "Settings", icon: <SettingsIcon /> },
+    { label: 'Dashboard', icon: <DashboardIcon /> },
+    { label: 'Sales', icon: <SalesIcon /> },
+    { label: 'Products', icon: <ProductIcon /> },
+    { label: 'Customers', icon: <CustomersIcon /> },
+    { label: 'Settings', icon: <SettingsIcon /> },
   ];
 
-  const classes = useStyles();
+  // const classes = useStyles();
 
   return (
     <Drawer
       sx={{
         width: sideMenuWidth,
         flexShrink: 0,
-        "& .MuiDrawer-paper": {
+        '& .MuiDrawer-paper': {
           width: sideMenuWidth,
-          boxSizing: "border-box",
+          boxSizing: 'border-box',
         },
       }}
       variant="permanent"
     >
       <List>
-        {menuItems.map((item) => (
+        {menuItems.map(item => (
           <ListItemButton
             key={item.label}
             component={Link}
@@ -61,6 +61,6 @@ const SideMenu = () => {
       </List>
     </Drawer>
   );
-};
+}
 
 export default SideMenu;

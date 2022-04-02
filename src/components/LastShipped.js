@@ -1,15 +1,15 @@
-import { makeStyles } from "@mui/styles";
-import ShippingIcon from "@mui/icons-material/LocalShipping";
-import DataCardContainer from "./DataCardContainer";
-import DataCardRowItem from "./DataCardRowItem";
+import { makeStyles } from '@mui/styles';
+import ShippingIcon from '@mui/icons-material/LocalShipping';
+import DataCardContainer from './DataCardContainer';
+import DataCardRowItem from './DataCardRowItem';
 
 const useStyles = makeStyles({
   LastShippedContainer: {
-    gridArea: "lastShipped / 2 / span 2",
+    gridArea: 'lastShipped / 2 / span 2',
   },
 });
 
-const LastShipped = ({ APIData }) => {
+function LastShipped({ APIData }) {
   const classes = useStyles();
 
   const sortedShipDates = APIData.sort((a, b) => {
@@ -28,15 +28,15 @@ const LastShipped = ({ APIData }) => {
   return (
     <div className={classes.LastShippedContainer}>
       <DataCardContainer medium autoHeight>
-        <div style={{ marginBottom: "0.5rem" }}>
+        <div style={{ marginBottom: '0.5rem' }}>
           <h3>Last shipped</h3>
         </div>
-        {lastShippedOrders.map((shipment) => (
-          <DataCardRowItem icon={<ShippingIcon />} />
+        {lastShippedOrders.map(shipment => (
+          <DataCardRowItem shipment={shipment} icon={<ShippingIcon />} />
         ))}
       </DataCardContainer>
     </div>
   );
-};
+}
 
 export default LastShipped;
