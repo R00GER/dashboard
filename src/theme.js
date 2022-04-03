@@ -1,8 +1,22 @@
 import { createTheme } from '@mui/material';
 
+const getDesignTokens = mode => ({
+  mode,
+  ...(mode === 'dark'
+    ? {
+        background: {
+          default: 'black',
+        },
+      }
+    : { default: '#f6f6f6' }),
+});
+
 const theme = createTheme({
-  typography: {
-    fontFamily: 'Open Sans',
+  palette: {
+    ...getDesignTokens('dark'),
+    typography: {
+      fontFamily: 'Open Sans',
+    },
   },
 });
 

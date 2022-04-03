@@ -1,15 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import LoadingSpinner from './LoadingSpinner';
 import SideMenu from './components/SideMenu';
 import AuthenticatedApp from './components/AuthenticatedApp';
 import Dashboard from './views/Dashboard';
+import { ColorModeContext } from './components/ColorModeProvider';
 
 function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ isError: false, message: '' });
   const [APIData, setAPIData] = useState([]);
+
+  const context = useContext(ColorModeContext);
+  console.log(context);
 
   const url = 'http://localhost:4000';
 
