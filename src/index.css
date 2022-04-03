@@ -9,8 +9,8 @@
 html,
 body {
   margin: 0;
-  font-family: "Open Sans", sans-serif;
-  height: "100%";
+  font-family: 'Open Sans', sans-serif;
+  height: '100%';
 }
 
 .App {
@@ -21,7 +21,7 @@ body {
 
 :root {
   --side-menu-width: 200px;
-  --color-main-background: #f9f9fb;
+  --color-main-background: #f6f6f6;
   --color-container-background: #fff;
   --color-text-secondary: #6a6a6a;
 }

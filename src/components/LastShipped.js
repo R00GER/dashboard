@@ -3,11 +3,14 @@ import ShippingIcon from '@mui/icons-material/LocalShipping';
 import DataCardContainer from './DataCardContainer';
 import DataCardRowItem from './DataCardRowItem';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   LastShippedContainer: {
     gridArea: 'lastShipped / 2 / span 2',
+    [theme.breakpoints.down('lg')]: {
+      gridArea: 'lastShipped',
+    },
   },
-});
+}));
 
 function LastShipped({ APIData }) {
   const classes = useStyles();
@@ -24,6 +27,8 @@ function LastShipped({ APIData }) {
     sortedShipDates[1],
     sortedShipDates[2],
   ];
+
+  console.log(lastShippedOrders);
 
   return (
     <div className={classes.LastShippedContainer}>
