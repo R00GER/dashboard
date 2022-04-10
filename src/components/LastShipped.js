@@ -1,5 +1,6 @@
 import { makeStyles } from '@mui/styles';
 import ShippingIcon from '@mui/icons-material/LocalShipping';
+import { Typography } from '@mui/material';
 import DataCardContainer from './DataCardContainer';
 import DataCardRowItem from './DataCardRowItem';
 
@@ -34,7 +35,7 @@ function LastShipped({ APIData }) {
     <div className={classes.LastShippedContainer}>
       <DataCardContainer medium autoHeight>
         <div style={{ marginBottom: '0.5rem' }}>
-          <h3>Last shipped</h3>
+          <Typography variant="h3">Last shipped</Typography>
         </div>
         {lastShippedOrders.map(shipment => (
           <DataCardRowItem shipment={shipment} icon={<ShippingIcon />} />

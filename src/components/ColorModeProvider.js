@@ -1,41 +1,31 @@
-import { createContext, useMemo, useState } from 'react';
-import { createTheme } from '@mui/material';
-
-// https://snappywebdesign.net/blog/how-to-code-a-dark-theme-with-material-ui/
-
-const getDesignTokens = mode => ({
-  mode,
-  ...(mode === 'dark'
-    ? {
-        background: {
-          default: 'black',
-        },
-      }
-    : { default: '#f6f6f6' }),
-});
-
-export const theme = createTheme({
-  palette: {
-    ...getDesignTokens('dark'),
-    typography: {
-      fontFamily: 'Open Sans',
-    },
-  },
-});
+import {
+  createContext,
+  useMemo,
+  useState,
+  cloneElement,
+  Children,
+} from 'react';
+import { darkTheme, lightTheme } from '../theme';
 
 export const ColorModeContext = createContext();
 
 function ColorModeProvider({ children }) {
-  const [mode, setMode] = useState('light');
+  const [darkMode, setDarkMode] = useState(false);
 
   const memoizedValue = useMemo(() => ({
-    mode,
-    setMode,
+    darkMode,
+    setDarkMode,
   }));
+
+  const childrenWithTheme = Children.map(children, child =>
+    cloneElement(child, {
+      theme: darkMode ? darkTheme : lightTheme,
+    }),
+  );
 
   return (
     <ColorModeContext.Provider value={memoizedValue}>
-      {children}
+      {childrenWithTheme}
     </ColorModeContext.Provider>
   );
 }

@@ -1,8 +1,8 @@
+import { Box } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles({
   containerBase: {
-    background: 'var(--color-container-background)',
     // minWidth: "200px",
     // maxWidth: "400px",
     // height: "150px",
@@ -24,7 +24,10 @@ function DataCardContainer({ children, small, medium, autoHeight }) {
   const classes = useStyles(autoHeight);
 
   return (
-    <div
+    <Box
+      sx={{
+        backgroundColor: 'secondary.bg',
+      }}
       className={[
         classes.containerBase,
         small && classes.containerSmall,
@@ -34,7 +37,7 @@ function DataCardContainer({ children, small, medium, autoHeight }) {
         .join(' ')}
     >
       {children}
-    </div>
+    </Box>
   );
 }
 

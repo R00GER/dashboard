@@ -31,7 +31,10 @@ function KeyValuesItem({ label, icon, total }) {
         <span>{icon}</span>
       </div>
       <div className={classes.keyValuesItemBottom}>
-        <Typography style={{ fontWeight: '600', fontSize: '1.1rem' }}>
+        <Typography
+          variant="body1"
+          style={{ fontWeight: '600', fontSize: '1.1rem' }}
+        >
           {total}
         </Typography>
         <Typography

@@ -20,8 +20,20 @@ body {
 }
 
 :root {
+  --color-darkest: #1e1e1e;
+  --color-dark: #252526;
+  --color-medium-dark: #2d2d30;
+  --color-light-dark: #3e3e42;
+  --color-primary-main: #007acc;
+
+  --color-secondary-main: #150050;
+
   --side-menu-width: 200px;
-  --color-main-background: #f6f6f6;
+  --color-main-background: #f2f2f2;
+  --color-main-background-dark: var(--color-darkest);
+
   --color-container-background: #fff;
   --color-text-secondary: #6a6a6a;
+
+  --container-border: #e8e8e8;
 }

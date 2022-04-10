@@ -6,6 +6,7 @@ import SideMenu from './components/SideMenu';
 import AuthenticatedApp from './components/AuthenticatedApp';
 import Dashboard from './views/Dashboard';
 import { ColorModeContext } from './components/ColorModeProvider';
+import Tools from './components/Tools';
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -43,6 +44,7 @@ function App() {
     <div className="App">
       <SideMenu />
       <AuthenticatedApp>
+        <Tools />
         {!!APIData.length && (
           <Routes>
             <Route path="dashboard" element={<Dashboard APIData={APIData} />} />

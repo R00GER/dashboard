@@ -1,20 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { ThemeProvider } from '@mui/styles';
+import { ThemeProvider } from '@mui/material';
 import { BrowserRouter } from 'react-router-dom';
-import theme from './theme';
 import ColorModeProvider from './components/ColorModeProvider';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-console.log(theme);
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ColorModeProvider>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider>
           <App />
         </ThemeProvider>
       </ColorModeProvider>
