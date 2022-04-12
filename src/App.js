@@ -2,11 +2,11 @@ import { useEffect, useState, useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import LoadingSpinner from './LoadingSpinner';
-import SideMenu from './components/SideMenu';
+import ApplicationSideMenu from './components/ApplicationSideMenu';
 import AuthenticatedApp from './components/AuthenticatedApp';
 import Dashboard from './views/Dashboard';
 import { ColorModeContext } from './components/ColorModeProvider';
-import Tools from './components/Tools';
+import ApplicationMenuBar from './components/ApplicationMenuBar';
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -42,9 +42,9 @@ function App() {
 
   return (
     <div className="App">
-      <SideMenu />
+      <ApplicationMenuBar />
+      <ApplicationSideMenu />
       <AuthenticatedApp>
-        <Tools />
         {!!APIData.length && (
           <Routes>
             <Route path="dashboard" element={<Dashboard APIData={APIData} />} />

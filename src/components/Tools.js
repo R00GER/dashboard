@@ -1,9 +1,9 @@
 import { makeStyles } from '@mui/styles';
-import { IconButton } from '@mui/material';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/ModeNight';
 import { useContext } from 'react';
 import { ColorModeContext } from './ColorModeProvider';
+import ButtonComponent from './UI/ButtonComponent';
 
 const useStyles = makeStyles({
   toolsContainer: {
@@ -27,8 +27,9 @@ function Tools() {
 
   return (
     <div className={classes.toolsContainer}>
-      <IconButton
-        className={classes.iconButton}
+      <ButtonComponent
+        iconButton
+        classes={classes.iconButton}
         onClick={() => setDarkMode(!darkMode)}
       >
         {darkMode ? (
@@ -36,7 +37,7 @@ function Tools() {
         ) : (
           <DarkModeIcon className={classes.icon} />
         )}
-      </IconButton>
+      </ButtonComponent>
     </div>
   );
 }

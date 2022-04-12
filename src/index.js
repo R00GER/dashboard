@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { ThemeProvider } from '@mui/material';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 import { BrowserRouter } from 'react-router-dom';
 import ColorModeProvider from './components/ColorModeProvider';
 import App from './App';
@@ -12,6 +12,7 @@ ReactDOM.render(
     <BrowserRouter>
       <ColorModeProvider>
         <ThemeProvider>
+          <CssBaseline />
           <App />
         </ThemeProvider>
       </ColorModeProvider>

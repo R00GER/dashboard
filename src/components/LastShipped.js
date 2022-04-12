@@ -1,8 +1,8 @@
 import { makeStyles } from '@mui/styles';
-import ShippingIcon from '@mui/icons-material/LocalShipping';
 import { Typography } from '@mui/material';
 import DataCardContainer from './DataCardContainer';
 import DataCardRowItem from './DataCardRowItem';
+import ButtonComponent from './UI/ButtonComponent';
 
 const useStyles = makeStyles(theme => ({
   LastShippedContainer: {
@@ -10,6 +10,20 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('lg')]: {
       gridArea: 'lastShipped',
     },
+  },
+  titleRow: {
+    marginBottom: '0.5rem',
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  bottomRow: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '0.5rem',
+  },
+  buttonTextTransform: {
+    textTransform: 'none',
   },
 }));
 
@@ -29,17 +43,27 @@ function LastShipped({ APIData }) {
     sortedShipDates[2],
   ];
 
-  console.log(lastShippedOrders);
-
   return (
     <div className={classes.LastShippedContainer}>
       <DataCardContainer medium autoHeight>
-        <div style={{ marginBottom: '0.5rem' }}>
+        <div className={classes.titleRow}>
           <Typography variant="h3">Last shipped</Typography>
+          <ButtonComponent
+            classes={classes.buttonTextTransform}
+            text="See all"
+          />
         </div>
-        {lastShippedOrders.map(shipment => (
-          <DataCardRowItem shipment={shipment} icon={<ShippingIcon />} />
+        {lastShippedOrders.map(({ customerName, shipDate, city, country }) => (
+          <DataCardRowItem
+            customerName={customerName}
+            shipDate={shipDate}
+            city={city}
+            country={country}
+          />
         ))}
+        <div className={classes.bottomRow}>
+          <ButtonComponent fullWidth variant="outlined" text="New Shipment" />
+        </div>
       </DataCardContainer>
     </div>
   );

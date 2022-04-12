@@ -11,10 +11,18 @@ const themeDefaults = {
   },
 };
 
-// const overrides = {
-//   components: {
+const themeOverrideDefaults = {
+  MuiListItemButton: {
+    styleOverrides: {
+      root: {
+        '&.Mui-selected': {
+          backgroundColor: 'transparent',
+        },
+      },
+    },
+  },
+};
 
-// };
 const COLOR_MEDIUM_DARK = '#2d2d30';
 const COLOR_PRIMARY_MAIN = '#007acc';
 
@@ -33,6 +41,9 @@ export const darkTheme = createTheme({
     },
   },
   typography: {
+    secondary: {
+      color: '#a2a2a2',
+    },
     body1: {
       ...themeDefaults.typography.body1,
       color: '#f2f2f2',
@@ -43,6 +54,14 @@ export const darkTheme = createTheme({
     },
   },
   components: {
+    ...themeOverrideDefaults,
+    MuiToolbar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#121212',
+        },
+      },
+    },
     MuiIconButton: {
       styleOverrides: {
         root: {
@@ -52,15 +71,13 @@ export const darkTheme = createTheme({
     },
     MuiSvgIcon: {
       styleOverrides: {
-        root: {
+        '&.Mui-selected': {
           fill: 'var(--color-primary-main)',
         },
       },
     },
   },
 });
-
-console.log(darkTheme);
 
 export const lightTheme = createTheme({
   palette: {
@@ -70,7 +87,25 @@ export const lightTheme = createTheme({
     },
     ...themeDefaults,
   },
+  typography: {
+    body1: {
+      ...themeDefaults.typography.body1,
+      color: '#2d2d2d',
+    },
+    h3: {
+      ...themeDefaults.typography.h3,
+      color: '#2d2d2d',
+    },
+  },
   components: {
+    ...themeOverrideDefaults,
+    MuiToolbar: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#fff',
+        },
+      },
+    },
     MuiIconButton: {
       styleOverrides: {
         root: {

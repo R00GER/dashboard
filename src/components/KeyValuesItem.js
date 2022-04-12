@@ -20,6 +20,9 @@ const useStyles = makeStyles({
     justifyContent: 'flex-end',
     height: '40%',
   },
+  icon: {
+    color: 'var(--color-primary-main)',
+  },
 });
 
 function KeyValuesItem({ label, icon, total }) {
@@ -28,7 +31,7 @@ function KeyValuesItem({ label, icon, total }) {
   return (
     <div key={label} className={classes.keyValuesItemContainer}>
       <div className={classes.keyValuesItemTop}>
-        <span>{icon}</span>
+        <span className={classes.icon}>{icon}</span>
       </div>
       <div className={classes.keyValuesItemBottom}>
         <Typography
@@ -37,10 +40,7 @@ function KeyValuesItem({ label, icon, total }) {
         >
           {total}
         </Typography>
-        <Typography
-          variant="caption"
-          style={{ color: 'var(--color-text-secondary)', fontSize: '0.85rem' }}
-        >
+        <Typography variant="secondary" style={{ fontSize: '0.85rem' }}>
           {label}
         </Typography>
       </div>
