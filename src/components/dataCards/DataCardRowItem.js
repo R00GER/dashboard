@@ -13,8 +13,12 @@ const useStyles = makeStyles({
   sectionContainerSmall: {
     flex: 1,
   },
+  sectionContainerMedium: {
+    flex: 1.5,
+  },
   sectionContainerLarge: {
     flex: 4,
+    paddingRight: '0.5rem',
   },
   icon: {
     color: 'var(--color-primary-main)',
@@ -28,9 +32,12 @@ const useStyles = makeStyles({
   },
 });
 
-function DataCardRowItem({ customerName, shipDate, city, country }) {
-  const shippedTo = `To ${country}, ${city}`;
-
+function DataCardRowItem({
+  centerTopText,
+  centerBottomText,
+  rightTopText,
+  rightBottomText,
+}) {
   const classes = useStyles();
 
   return (
@@ -39,13 +46,16 @@ function DataCardRowItem({ customerName, shipDate, city, country }) {
         <ShippingIcon className={classes.icon} />
       </div>
       <div className={classes.sectionContainerLarge}>
-        <Typography className={classes.textBold}>{customerName}</Typography>
+        <Typography className={classes.textBold}>{centerTopText}</Typography>
         <Typography variant="secondary" className={classes.textSecondary}>
-          {shippedTo}
+          {centerBottomText}
         </Typography>
       </div>
-      <div className={classes.sectionContainerSmall}>
-        <Typography variant="secondary">{shipDate}</Typography>
+      <div className={classes.sectionContainerMedium}>
+        {rightTopText && (
+          <Typography variant="secondary">{rightTopText}</Typography>
+        )}
+        {rightBottomText && <Typography>{rightBottomText}</Typography>}
       </div>
     </div>
   );

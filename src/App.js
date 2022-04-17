@@ -1,20 +1,20 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import axios from 'axios';
 import LoadingSpinner from './LoadingSpinner';
 import ApplicationSideMenu from './components/ApplicationSideMenu';
 import AuthenticatedApp from './components/AuthenticatedApp';
 import Dashboard from './views/Dashboard';
-import { ColorModeContext } from './components/ColorModeProvider';
-import ApplicationMenuBar from './components/ApplicationMenuBar';
+// import { ColorModeContext } from './components/ColorModeProvider';
+import ApplicationMenuBar from './components/menuBar/ApplicationMenuBar';
 
 function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ isError: false, message: '' });
   const [APIData, setAPIData] = useState([]);
 
-  const context = useContext(ColorModeContext);
-  console.log(context);
+  // const context = useContext(ColorModeContext);
+  // console.log(context);
 
   const url = 'http://localhost:4000';
 
@@ -36,16 +36,14 @@ function App() {
     getAllData();
   }, []);
 
-  console.log(APIData);
-  console.log(loading);
-  console.log(APIData.map(sale => sale.orderDate.slice(-4)));
-
+  // console.log(loading);
+  // console.log(APIData.map(sale => sale.orderDate.slice(-4)));
   return (
     <div className="App">
       <ApplicationMenuBar />
       <ApplicationSideMenu />
       <AuthenticatedApp>
-        {!!APIData.length && (
+        {!!Object.keys(APIData).length && (
           <Routes>
             <Route path="dashboard" element={<Dashboard APIData={APIData} />} />
           </Routes>

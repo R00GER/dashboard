@@ -2,8 +2,8 @@ import { makeStyles } from '@mui/styles';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/ModeNight';
 import { useContext } from 'react';
-import { ColorModeContext } from './ColorModeProvider';
-import ButtonComponent from './UI/ButtonComponent';
+import { ColorModeContext } from '../ColorModeProvider';
+import ButtonComponent from '../UI/ButtonComponent';
 
 const useStyles = makeStyles({
   toolsContainer: {

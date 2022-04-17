@@ -2,7 +2,7 @@ import ProfitIcon from '@mui/icons-material/AttachMoney';
 import SalesIcon from '@mui/icons-material/ShoppingCart';
 import CustomerIcon from '@mui/icons-material/Face';
 import { makeStyles } from '@mui/styles';
-import DataCardContainer from './DataCardContainer';
+import DataCardContainer from '../dataCards/DataCardContainer';
 import KeyValuesItem from './KeyValuesItem';
 
 const useStyles = makeStyles({
@@ -17,12 +17,13 @@ const useStyles = makeStyles({
   },
 });
 
-function KeyValuesSection({ APIData }) {
+function KeyValuesSection({ sales }) {
   const getTotals = property =>
-    APIData.reduce((total, sale) => total + +sale[property], 0).toFixed(3);
+    sales.reduce((total, sale) => total + +sale[property], 0).toFixed(3);
 
   const getTotalProfit = () => {
     const totalProfit = getTotals('profit');
+    console.log({ totalProfit });
     return `${totalProfit} EUR`;
   };
 
@@ -32,7 +33,7 @@ function KeyValuesSection({ APIData }) {
   };
 
   const getTotalCustomers = () =>
-    [...new Set(APIData.map(salesAction => salesAction.customerId))].length;
+    [...new Set(sales.map(salesAction => salesAction.customerId))].length;
 
   const items = [
     {

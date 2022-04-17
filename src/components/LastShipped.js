@@ -1,7 +1,7 @@
 import { makeStyles } from '@mui/styles';
 import { Typography } from '@mui/material';
-import DataCardContainer from './DataCardContainer';
-import DataCardRowItem from './DataCardRowItem';
+import DataCardContainer from './dataCards/DataCardContainer';
+import DataCardRowItem from './dataCards/DataCardRowItem';
 import ButtonComponent from './UI/ButtonComponent';
 
 const useStyles = makeStyles(theme => ({
@@ -15,37 +15,28 @@ const useStyles = makeStyles(theme => ({
     marginBottom: '0.5rem',
     display: 'flex',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   bottomRow: {
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '0.5rem',
+    marginTop: '1rem',
   },
   buttonTextTransform: {
     textTransform: 'none',
   },
+  bottomButton: {
+    maxWidth: '450px',
+  },
 }));
 
-function LastShipped({ APIData }) {
+function LastShipped({ lastShipped }) {
   const classes = useStyles();
-
-  const sortedShipDates = APIData.sort((a, b) => {
-    const firstDate = new Date(a.shipDate);
-    const secondDate = new Date(b.shipDate);
-
-    return secondDate - firstDate;
-  });
-
-  const lastShippedOrders = [
-    sortedShipDates[0],
-    sortedShipDates[1],
-    sortedShipDates[2],
-  ];
 
   return (
     <div className={classes.LastShippedContainer}>
-      <DataCardContainer medium autoHeight>
+      <DataCardContainer>
         <div className={classes.titleRow}>
           <Typography variant="h3">Last shipped</Typography>
           <ButtonComponent
@@ -53,16 +44,23 @@ function LastShipped({ APIData }) {
             text="See all"
           />
         </div>
-        {lastShippedOrders.map(({ customerName, shipDate, city, country }) => (
-          <DataCardRowItem
-            customerName={customerName}
-            shipDate={shipDate}
-            city={city}
-            country={country}
-          />
-        ))}
+        {lastShipped.map(
+          ({ orderId, customerName, shipDate, city, country }) => (
+            <DataCardRowItem
+              key={orderId}
+              centerTopText={customerName}
+              centerBottomText={`To ${country}, ${city}`}
+              rightTopText={shipDate}
+            />
+          ),
+        )}
         <div className={classes.bottomRow}>
-          <ButtonComponent fullWidth variant="outlined" text="New Shipment" />
+          <ButtonComponent
+            fullWidth
+            variant="outlined"
+            text="New Shipment"
+            classes={classes.bottomButton}
+          />
         </div>
       </DataCardContainer>
     </div>

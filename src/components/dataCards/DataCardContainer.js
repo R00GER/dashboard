@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     // maxWidth: "400px",
     // height: "150px",
     boxShadow: 'rgba(0, 0, 0, 0.16) 0px 1px 4px',
-    padding: '1rem',
+    padding: '0.5rem 1rem 1rem 1rem',
     borderRadius: '8px',
     flex: 1,
   },
